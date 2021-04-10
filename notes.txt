@@ -130,4 +130,31 @@ Data Types
     byte (alias for uint8)
     rune (alias for int32) (represent 1 unicode character)
 
-    
+Go application organization
+    Module
+    package
+
+$GOPATH
+    GoApps
+        bin
+        pkg
+        src
+            github.com
+                tkmagesh
+                    App1
+
+$GOROOT
+    path to the go tools
+
+to create a module file
+    go mod init <module_name>
+            
+
+Constructs
+    if else
+    switch
+    for
+
+/* To be discussed */
+	var x float64 = 404932374503908.2134873294
+	fmt.Printf("%9.5f\n", x)
