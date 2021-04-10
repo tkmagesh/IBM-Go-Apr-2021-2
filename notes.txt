@@ -1,0 +1,133 @@
+Name
+Primary Skillset
+Total Experience
+Experience in Golang
+
+Schedule
+    Commence @ 8:30 AM
+    Tea @ 11 for 20 mins
+    Lunch @ 1 for 60 mins
+    Tea @ 4 for 20 mins
+    Windup @ 6:30
+
+C -
+C++ - 20 years
+Ruby - 15 years
+Java - 15 years
+C# - 13 years
+Golang - 2 years
+
+Google
+Cloud Native
+Low memory footprint
+Easy to learn
+Supports OO & Functional
+
+Simplicity
+    Paradox of Choice - Barray Shwartz
+    25 keywords
+Functional
+    Functions are first class citizens
+        Can be assigned to variables
+        Supports Higher Order Functions
+            Can be passed as arguments to other functions
+            Can be returned as return values from other functions
+        Can maintain state using closures
+        Variadic functions
+
+Built for concurrency
+    language features for concurrency
+        go, chan (data type), select, range
+    No exceptions (ONLY errors)
+    No classes, no inhertance (prefer composition instead)
+    Low memory footprint
+    Parallellization is built in
+
+
+More and more application are connected
+
+
+
+Multithreading
+    Resource Intensive (2MB RAM)
+    CPU
+    Not Efficient for I/O
+
+Single Thread (I/O concurrency)
+    Resource Efficient (Scheduler - Event Loop)
+    Not suitable for CPU intensive operations
+
+Go
+    Builtin Scheduler
+    1 thread = 1000s of goroutine
+
+
+
+func fn1(){
+    throw new Exception("");
+    fmt.Println("fn1 is invoked")
+}
+
+func fn2(){
+    fmt.Println("fn2 is invoked")
+}
+
+//start
+func main(){
+    try {
+        go fn1()
+        go fn2()
+        
+    } catch {
+
+    }
+    fmt.Println("main completed")  
+}
+
+
+main completed
+fn1 is invoked
+fn2 is invoked
+
+Goland (Jetbrains)
+
+http://www.golang.org
+http://code.visualstudio.com
+In visualstudio code
+    cmd + shift + p
+        select "go: install/update tools"
+
+Learning a language
+    1. Data types
+    2. Programming Constructs
+    3. APIs
+    4. Modularity 
+    5. Unique features of the language
+    6. How to debug
+
+Data Types
+    bool
+    string
+
+    int
+    int8
+    int16
+    int32
+    int64
+
+    uint
+    uint8
+    uint16
+    uint32
+    uint64
+
+    float32
+    float64
+
+    complex64 (real float32 imaginary float32)
+    complex128 (real float64 imaginary float64)
+
+    byte (alias for uint8)
+    rune (alias for int32) (represent 1 unicode character)
+
+    
