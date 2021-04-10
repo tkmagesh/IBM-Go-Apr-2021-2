@@ -158,3 +158,10 @@ Constructs
 /* To be discussed */
 	var x float64 = 404932374503908.2134873294
 	fmt.Printf("%9.5f\n", x)
+
+Write a console program that will display the following menu
+    1. add
+    2. subtract
+    3. multiply
+    4. divide
+    5. exit
