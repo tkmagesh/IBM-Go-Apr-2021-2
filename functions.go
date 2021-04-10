@@ -68,11 +68,26 @@ func main() {
 	adderFor100 := getAdderFor(100)
 	fmt.Println(adderFor100(200))
 
-	quotient, _, err := divide(10, 0)
+	quotient, _, err := divide(10, 1)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	fmt.Println(quotient)
+	count := getCounter()
+	fmt.Println(count())
+	fmt.Println(count())
+	fmt.Println(count())
+}
 
+func getCounter() func() int {
+	counter := 0
+	return func() int {
+		counter += 1
+		return counter
+	}
+}
+
+func fn() {
+	var x = 100
 }
