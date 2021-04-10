@@ -74,10 +74,70 @@ func main() {
 		return
 	}
 	fmt.Println(quotient)
-	count := getCounter()
+	count := func() func() int {
+		counter := 0
+		return func() int {
+			counter += 1
+			return counter
+		}
+	}()
 	fmt.Println(count())
 	fmt.Println(count())
 	fmt.Println(count())
+
+	up, down := func() (func() int, func() int) {
+		counter := 0
+		up := func() int {
+			counter += 1
+			return counter
+		}
+		down := func() int {
+			counter -= 1
+			return counter
+		}
+		return up, down
+	}()
+
+	fmt.Println(up())
+	fmt.Println(up())
+	fmt.Println(up())
+
+	fmt.Println(down())
+	fmt.Println(down())
+	fmt.Println(down())
+	fmt.Println(down())
+	fmt.Println(down())
+
+	evenNos := getNos(func(no int) bool {
+		return no%2 == 0
+	})
+	fmt.Println("Even nos")
+	fmt.Println(evenNos())
+	fmt.Println(evenNos())
+	fmt.Println(evenNos())
+	fmt.Println(evenNos())
+
+	isPrime := func(n int) bool {
+		if n == 1 {
+			return false
+		}
+		for i := 2; i <= (n / 2); i++ {
+			if n%i == 0 {
+				return false
+			}
+		}
+		return true
+	}
+
+	primeNos := getNos(isPrime)
+	fmt.Println("Prime Nos :")
+	fmt.Println(primeNos())
+	fmt.Println(primeNos())
+	fmt.Println(primeNos())
+	fmt.Println(primeNos())
+	fmt.Println(primeNos())
+	fmt.Println(primeNos())
+
 }
 
 func getCounter() func() int {
@@ -88,6 +148,43 @@ func getCounter() func() int {
 	}
 }
 
-func fn() {
-	var x = 100
+/*
+up() => 1
+up() => 2
+up() => 3
+
+down() => 2
+down() => 1
+down() => 0
+down() => -1
+
+*/
+
+func getNos(predicate func(int) bool) func() int {
+	counter := 0
+	return func() int {
+		for {
+			counter += 1
+			if predicate(counter) {
+				return counter
+			}
+		}
+
+	}
 }
+
+/*
+var evenNos = genNos()
+evenNos() //=> 2
+evenNos() //=> 4
+evenNos() //=> 4
+
+var oddNos = getNos()
+oddNos() //=> 1
+oddNos() //=> 3
+oddNos() //=> 5
+
+var nosBy3 = getNos()
+nosBy3() //=> 3
+nosBy3() //=> 6
+nosBy3() //=> 9  */
