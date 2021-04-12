@@ -188,3 +188,54 @@ Collections
 
 Pointer
     address to a value
+
+Dont share memory for communication, instead communicate by sharing memory
+
+Pure functions
+    A function can be called as a 'pure function' if the invocation of the function can be replaced with the result of the function without affecting the outcome
+        - should not have any side-effects
+        - depends on data that is NOT given as arguments
+
+/*
+func add(x,y int) int{
+    fmt.Printf("processing %d and %d\n", x, y)
+    return x + y
+}
+*/
+
+var z int = 100
+func add(x,y int) int {
+    return x + y + z
+}
+
+z = 1000
+func addClient(x,y int){
+    result := add(10,20)
+    fmt.Println("result = ", result)
+}
+
+output:
+result = 300
+
+output:
+processing 10 and 20
+result = 30
+
+output:
+result = 30
+
+output:
+result = 130
+
+Channels enables communication between goroutines
+    channel is a data type in Go
+    Creation
+        ch := make(chan int)
+    reading and writing data in the channel
+        Using '<-' operator
+
+        writing data into the channel
+            ch <- data
+
+        Read data from the channel
+            variable := <- ch
