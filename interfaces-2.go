@@ -27,17 +27,46 @@ func (products Products) String() string {
 	return result
 }
 
+type ProductComparer func(p1 Product, p2 Product) bool
+
+type ProductComparers map[string]ProductComparer
+
+var productComparers ProductComparers = ProductComparers{
+	"id": func(p1 Product, p2 Product) bool {
+		return p1.id < p2.id
+	},
+	"name": func(p1 Product, p2 Product) bool {
+		return p1.name < p2.name
+	},
+	"cost": func(p1 Product, p2 Product) bool {
+		return p1.cost < p2.cost
+	},
+	"units": func(p1 Product, p2 Product) bool {
+		return p1.units < p2.units
+	},
+	"category": func(p1 Product, p2 Product) bool {
+		return p1.category < p2.category
+	},
+}
+
+var currentProductComparer ProductComparer = productComparers["id"]
+
 /* implementation of "Interface" interface in sort package */
 func (products Products) Len() int {
 	return len(products)
 }
 
 func (products Products) Less(i, j int) bool {
-	return products[i].id < products[j].id
+	return currentProductComparer(products[i], products[j])
 }
 
 func (products Products) Swap(i, j int) {
 	products[i], products[j] = products[j], products[i]
+}
+
+func (products Products) Sort(attrName string) {
+	currentProductComparer = productComparers[attrName]
+	sort.Sort(products)
 }
 
 func main() {
@@ -50,6 +79,14 @@ func main() {
 		{id: 103, name: "Len", cost: 14, units: 50, category: "stationary"},
 	}
 	fmt.Printf("Products\n%v", products)
-	sort.Sort(products)
-	fmt.Printf("After sorting:\n%v", products)
+	products.Sort("id")
+	fmt.Printf("After sorting by id:\n%v", products)
+	products.Sort("name")
+	fmt.Printf("After sorting by name:\n%v", products)
+	products.Sort("cost")
+	fmt.Printf("After sorting by cost:\n%v", products)
+	products.Sort("units")
+	fmt.Printf("After sorting by units:\n%v", products)
+	products.Sort("category")
+	fmt.Printf("After sorting by category:\n%v", products)
 }
