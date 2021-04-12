@@ -31,6 +31,7 @@ type ProductComparer func(p1 Product, p2 Product) bool
 
 type ProductComparers map[string]ProductComparer
 
+//generalize the below implementation using reflection
 var productComparers ProductComparers = ProductComparers{
 	"id": func(p1 Product, p2 Product) bool {
 		return p1.id < p2.id
