@@ -47,7 +47,7 @@ func main() {
 		fmt.Println(grapes.product.cost, grapes.product.units)
 	*/
 
-	var grapes = PerishableProduct{Product: Product{id: 200, name: "grapes", cost: 70, units: 10, category: "fruits"}, Dummy: Dummy{name: "Dummy"}, expiry: "2 Days"}
+	var grapes = PerishableProduct{Product: Product{id: 200, name: "grapes", cost: 70, units: 10, category: "fruits"}, expiry: "2 Days"}
 	fmt.Println(grapes)
 	fmt.Println(grapes.Product.cost, grapes.Product.units)
 	fmt.Println(grapes.cost, grapes.units)
@@ -61,6 +61,59 @@ func main() {
 		{id: 103, name: "Len", cost: 14, units: 50, category: "stationary"},
 	}
 
+	ken := Product{id: 107, name: "Ken", cost: 12, units: 20, category: "utencil"}
+	fmt.Printf("Index of 'ken' - %v\n", Index(products, ken))
+	fmt.Printf("Include 'ken' - %v\n", Include(products, ken))
+	fmt.Printf("Any stationary products ? - %v\n", Any(products, func(p Product) bool {
+		return p.category == "stationary"
+	}))
+	fmt.Printf("Are all stationary products ? - %v\n", All(products, func(p Product) bool {
+		return p.category == "stationary"
+	}))
+	fmt.Printf("Filter stationary products  - %v\n", Filter(products, func(p Product) bool {
+		return p.category == "stationary"
+	}))
+}
+
+func Index(products []Product, p Product) int {
+	for idx, product := range products {
+		if product == p {
+			return idx
+		}
+	}
+	return -1
+}
+
+func Include(products []Product, p Product) bool {
+	return Index(products, p) != -1
+}
+
+func Any(products []Product, predicate func(p Product) bool) bool {
+	for _, product := range products {
+		if predicate(product) {
+			return true
+		}
+	}
+	return false
+}
+
+func All(products []Product, predicate func(p Product) bool) bool {
+	for _, product := range products {
+		if !predicate(product) {
+			return false
+		}
+	}
+	return true
+}
+
+func Filter(products []Product, predicate func(p Product) bool) []Product {
+	result := []Product{}
+	for _, product := range products {
+		if predicate(product) {
+			result = append(result, product)
+		}
+	}
+	return result
 }
 
 /*
