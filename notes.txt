@@ -185,3 +185,6 @@ Collections
     Map
         Collection of Key/Value pairs
         Type of Key/Values can be determined by the developer
+
+Pointer
+    address to a value

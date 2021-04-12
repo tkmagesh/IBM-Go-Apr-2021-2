@@ -72,8 +72,9 @@ func main() {
 	fmt.Println("Adding a new key/value pair")
 
 	//adding a new key/value pair
-	cityRanks["Tumukuru"] = 5
-	fmt.Printf("City Ranks : %v\n", cityRanks)
+	//cityRanks["Tumukuru"] = 5
+	appendCityRank(cityRanks, "Tumukuru", 5)
+	fmt.Printf("After adding Tumukuru, City Ranks : %v\n", cityRanks)
 
 	//iteration using the range
 	fmt.Println("Using range over map")
@@ -89,4 +90,8 @@ func main() {
 	_, exists := cityRanks["Bengaluru"]
 	fmt.Println("Is Bengaluru Ranked = ", exists)
 
+}
+
+func appendCityRank(cityRanks map[string]int, city string, rank int) {
+	cityRanks[city] = rank
 }
