@@ -30,6 +30,7 @@ func fn() (ret int) {
 	defer func() {
 		fmt.Println("deferred function f2 invoked")
 	}()
+
 	defer func() {
 		fmt.Println("deferred function f3 invoked")
 	}()

@@ -165,3 +165,23 @@ Write a console program that will display the following menu
     3. multiply
     4. divide
     5. exit
+
+state
+    structs
+behavior
+    functions
+
+Collections
+    Array
+        Collection of data of the same type
+        Fixed Size (determined by the size when the array is created)
+
+    Slice
+        Collection of data of the same type
+        Varying size
+        It internally uses an Array
+        Provides convenient wrapper for an Array
+
+    Map
+        Collection of Key/Value pairs
+        Type of Key/Values can be determined by the developer
