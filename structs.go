@@ -52,4 +52,23 @@ func main() {
 	fmt.Println(grapes.Product.cost, grapes.Product.units)
 	fmt.Println(grapes.cost, grapes.units)
 
+	products := []Product{
+		{id: 100, name: "Pen", cost: 10, units: 10, category: "stationary"},
+		{id: 106, name: "Den", cost: 16, units: 50, category: "stationary"},
+		{id: 107, name: "Ken", cost: 12, units: 20, category: "utencil"},
+		{id: 102, name: "Zen", cost: 18, units: 70, category: "stationary"},
+		{id: 104, name: "Ten", cost: 15, units: 30, category: "utencil"},
+		{id: 103, name: "Len", cost: 14, units: 50, category: "stationary"},
+	}
+
 }
+
+/*
+Index() => index of a product in the products slice
+Include() => if the given product in the given slice
+Any() => if there is any product matching the criteria (user defined)
+All() => if all the products matches the given criteria
+Filter() => return the products matching the given criteria
+
+
+*/
