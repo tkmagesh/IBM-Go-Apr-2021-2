@@ -13,7 +13,7 @@ func main() {
 	fmt.Printf("After incrementing, no = %d\n", no)
 
 	x, y := 10, 20
-	swap(x, y)
+	swap(&x, &y)
 	fmt.Printf("After swapping x, y = %d, %d\n", x, y)
 }
 
@@ -21,8 +21,11 @@ func increment(no *int) {
 	*no = *no + 1
 }
 
-func swap(x, y int) {
-	temp := x
-	x = y
-	y = temp
+func swap(x, y *int) {
+	/*
+		temp := *x
+		*x = *y
+		*y = temp
+	*/
+	*x, *y = *y, *x
 }
