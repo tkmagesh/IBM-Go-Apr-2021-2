@@ -58,4 +58,35 @@ func main() {
 		fmt.Printf("evenNo at %d = %d\n", idx, evenNo)
 	}
 
+	fmt.Printf("\nMap\n")
+
+	cityRanks := map[string]int{
+		"Udupi":     2,
+		"Mysuru":    1,
+		"Mangaluru": 3,
+		"Bengaluru": 4,
+	}
+
+	//cityRanks := make(map[string]int, 200);
+	fmt.Printf("City Ranks : %v\n", cityRanks)
+	fmt.Println("Adding a new key/value pair")
+
+	//adding a new key/value pair
+	cityRanks["Tumukuru"] = 5
+	fmt.Printf("City Ranks : %v\n", cityRanks)
+
+	//iteration using the range
+	fmt.Println("Using range over map")
+	for city, rank := range cityRanks {
+		fmt.Printf("City = %s, Rank = %d\n", city, rank)
+	}
+
+	//delete a value
+	delete(cityRanks, "Bengaluru")
+	fmt.Println("After removing Bengaluru")
+	fmt.Printf("City Ranks : %v\n", cityRanks)
+
+	_, exists := cityRanks["Bengaluru"]
+	fmt.Println("Is Bengaluru Ranked = ", exists)
+
 }
