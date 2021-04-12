@@ -23,4 +23,39 @@ func main() {
 		}
 	}
 	fmt.Printf("matrix - %v\n", matrix)
+
+	//slice
+	/*
+		dynamic size
+		highlevel apis for manipulation
+	*/
+	fmt.Println("Slice")
+	nosSlice := []int{0, 1, 2, 3, 4, 5}
+	fmt.Printf("nosSlice = %v\n", nosSlice)
+
+	nosSlice = append(nosSlice, 6, 7, 8)
+	fmt.Printf("after appending, nosSlice = %v\n", nosSlice)
+	fmt.Printf("Len of nosSlice = %d\n", len(nosSlice))
+	fmt.Printf("Capacity of nosSlice = %d\n", cap(nosSlice))
+
+	/*
+		nosSlice[lo : hi] => return from lo to (hi - 1)
+		nosSlice[lo : lo] => empty
+		nosSlice[lo : lo+1] => one element (at lo)
+		nosSlice[lo : ] => all the values from lo
+		nosSlice[:hi] => all the values from 0 to hi-1
+	*/
+
+	fmt.Printf("nosSlice[1:4] => %v\n", nosSlice[1:4])
+	fmt.Printf("nosSlice[1:1] => %v\n", nosSlice[1:1])
+	fmt.Printf("nosSlice[1:2] => %v\n", nosSlice[1:2])
+	fmt.Printf("nosSlice[5:] => %v\n", nosSlice[5:])
+	fmt.Printf("nosSlice[:5] => %v\n", nosSlice[:5])
+
+	fmt.Println("using range construct")
+	evenNos := []int{2, 4, 6, 8, 10}
+	for idx, evenNo := range evenNos {
+		fmt.Printf("evenNo at %d = %d\n", idx, evenNo)
+	}
+
 }
