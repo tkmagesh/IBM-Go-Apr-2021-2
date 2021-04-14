@@ -22,20 +22,22 @@ func writeData(ch chan int) {
 
 func main() {
 	fmt.Println("Starting the main function")
-	ch := make(chan int)
+	ch := make(chan int, 2)
 	go writeData(ch)
+
 	fmt.Println("Before reading 100 from the channel")
 	fmt.Println("Data from the channel ", <-ch)
 	fmt.Println("After reading 100 from the channel")
-	fmt.Println("Before reading 200 from the channel")
-	fmt.Println("Data from the channel ", <-ch)
-	fmt.Println("After reading 200 from the channel")
-	fmt.Println("Before reading 300 from the channel")
-	fmt.Println("Data from the channel ", <-ch)
-	fmt.Println("After reading 300 from the channel")
-	fmt.Println("Before reading 400 from the channel")
-	fmt.Println("Data from the channel ", <-ch)
-	fmt.Println("After reading 400 from the channel")
+	/*
+		fmt.Println("Before reading 200 from the channel")
+		fmt.Println("Data from the channel ", <-ch)
+		fmt.Println("After reading 200 from the channel")
+		fmt.Println("Before reading 300 from the channel")
+		fmt.Println("Data from the channel ", <-ch)
+		fmt.Println("After reading 300 from the channel")
+		fmt.Println("Before reading 400 from the channel")
+		fmt.Println("Data from the channel ", <-ch)
+		fmt.Println("After reading 400 from the channel") */
 	time.Sleep(3 * time.Second)
 	//fmt.Println("Data from the channel ch is ", <-ch)
 
