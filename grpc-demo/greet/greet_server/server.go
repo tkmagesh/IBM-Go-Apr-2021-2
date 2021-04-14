@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/status"
 
 	"grpc-go-course/greet/greetpb"
@@ -20,6 +19,7 @@ import (
 
 type server struct{}
 
+//request & response
 func (*server) Greet(ctx context.Context, req *greetpb.GreetRequest) (*greetpb.GreetResponse, error) {
 	fmt.Printf("Greet function was invoked with %v\n", req)
 	firstName := req.GetGreeting().GetFirstName()
@@ -117,7 +117,7 @@ func main() {
 	}
 
 	opts := []grpc.ServerOption{}
-	tls := false
+	/*tls := false
 	if tls {
 		certFile := "ssl/server.crt"
 		keyFile := "ssl/server.pem"
@@ -127,7 +127,7 @@ func main() {
 			return
 		}
 		opts = append(opts, grpc.Creds(creds))
-	}
+	} */
 
 	s := grpc.NewServer(opts...)
 	greetpb.RegisterGreetServiceServer(s, &server{})
