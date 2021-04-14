@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func fibonacci(ch chan int, quit chan bool) {
+func fibonacci(ch chan int, quit <-chan time.Time) {
 	x, y := 0, 1
 	for {
 		select {
@@ -22,17 +22,16 @@ func fibonacci(ch chan int, quit chan bool) {
 func main() {
 
 	ch := make(chan int)
-	quit := make(chan bool)
+	//quit := make(chan bool)
 	go func() {
 		for {
 			fmt.Println(<-ch)
 		}
 	}()
-	go fibonacci(ch, quit)
-	/* input := ""
+	go fibonacci(ch, time.After(15*time.Second))
+	input := ""
 	fmt.Println("Hit ENTER to stop")
-	fmt.Scanln(&input) */
-	<-time.After(15 * time.Second)
-	quit <- true
+	fmt.Scanln(&input)
+
 	fmt.Println("End of main")
 }
