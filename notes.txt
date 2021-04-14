@@ -239,3 +239,21 @@ Channels enables communication between goroutines
 
         Read data from the channel
             variable := <- ch
+
+
+Browsers (Virtual OS) (HTML5)
+
+    Data Storage
+        LocalStorage
+        SessionStorage
+        IndexedDB
+    File System Access
+        File System API
+    Interprocess Communication
+        Server Sent Events
+        WebSockets
+        WebRTC (P2P)
+    Install
+        Service Worker
+    Device Access
+        APIs
